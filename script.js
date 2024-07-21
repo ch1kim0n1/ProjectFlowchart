@@ -1,3 +1,5 @@
+//NOTE: Core courses are unclickable and have no description.
+
 document.addEventListener('DOMContentLoaded', function() {
     const courseData = getData();
     const courseTable = document.getElementById('courseTable');
@@ -7,8 +9,12 @@ document.addEventListener('DOMContentLoaded', function() {
     const popupCourseDescription = document.getElementById('popupCourseDescription');
     const popupCourseSemester = document.getElementById('popupCourseSemester');
     const closeBtn = document.querySelector('.close-btn');
+    const searchBox = document.getElementById('searchBox');
+    const searchButton = document.getElementById('searchButton');
+    let major = 'CE'; // Default major
 
     function createTable() {
+        courseTable.innerHTML = ''; // Clear existing content
         const semesters = Array.from(new Set(courseData.courses.map(course => course.semester))).sort();
         semesters.forEach(semester => {
             const courses = courseData.getCoursesBySemester(semester);
@@ -67,9 +73,11 @@ document.addEventListener('DOMContentLoaded', function() {
         if (courseId !== "core") {
             const course = courseData.getCourseById(Number(courseId));
             popupCourseName.textContent = course.name;
-            popupCourseCredits.textContent = "3"; // You can update this value based on your data
-            popupCourseDescription.textContent = "Course description goes here."; // Update with actual description if available
+            popupCourseCredits.textContent = parseInt(course.code.match(/\d+/)[0].charAt(1)); //the amount of credits given per course
+            popupCourseDescription.textContent = "Course description goes here."; // Update with actual description if available. ADD LATER!!!
             popupCourseSemester.textContent = course.semester;
+            popupCoursePrerequisites.textContent = course.prerequisites.join(', ') || 'None';
+            popupCourseCorequisites.textContent = course.corequisites.join(', ') || 'None';
             coursePopup.style.display = "block";
         }
     }
@@ -121,6 +129,57 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    // Close popup
+    closeBtn.addEventListener('click', function() {
+        coursePopup.style.display = "none";
+    });
+
+    // Search functionality
+    searchButton.addEventListener('click', function() {
+        const searchTerm = searchBox.value.toLowerCase();
+        const courses = courseData.courses.filter(course => 
+            course.name.toLowerCase().includes(searchTerm) ||
+            course.code.toLowerCase().includes(searchTerm)
+        );
+        displaySearchResults(courses);
+    });
+
+    function displaySearchResults(courses) {
+        courseTable.innerHTML = '';
+        const row = document.createElement('tr');
+        courses.forEach(course => {
+            const courseCell = document.createElement('td');
+            courseCell.classList.add('course-cell');
+            courseCell.dataset.courseId = course.id;
+
+            const courseCode = document.createElement('span');
+            courseCode.textContent = course.code;
+            courseCode.classList.add('course-code');
+
+            const courseName = document.createElement('span');
+            courseName.textContent = course.name;
+            courseName.classList.add('course-name');
+
+            courseCell.appendChild(courseCode);
+            courseCell.appendChild(courseName);
+
+            // Hover event listeners
+            courseCell.addEventListener('mouseenter', handleMouseEnter);
+            courseCell.addEventListener('mouseleave', handleMouseLeave);
+            courseCell.addEventListener('click', handleCourseClick);
+
+            row.appendChild(courseCell);
+        });
+        courseTable.appendChild(row);
+    }
+
+    // Set major
+    window.setMajor = function(selectedMajor) {
+        major = selectedMajor;
+        // Update the course table based on the selected major
+        createTable();
+    }
+
     closeBtn.addEventListener('click', () => {
         coursePopup.style.display = "none";
     });
@@ -131,5 +190,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
+    
     createTable();
 });
