@@ -1,8 +1,10 @@
-# Course Planner
+# Project Flowchart
 
 ![Course Planner Logo](assets/utd_png.png)
 
-Welcome to the **Course Planner**! This web application helps students plan their courses efficiently by providing detailed information about various courses, including prerequisites, corequisites, and postrequisites. Built with ❤️ by Vladislav, Armaan, and Divya.
+Welcome to the **Project Flowchart**! This web application is providing detailed information about various degree plans, courses, including prerequisites, corequisites, and postrequisites. 
+
+Built with ❤️ by Vladislav, Armaan, and Divya.
 
 ## 🚀 Features
 
@@ -11,7 +13,6 @@ Welcome to the **Course Planner**! This web application helps students plan thei
 - **Search Functionality**: Quickly search for courses by name or code.
 - **Detailed Course Information**: View course details including credits, description, semester, prerequisites, and corequisites in a popup window.
 - **Color Key**: Understand course relationships with a color-coded key for prerequisites, corequisites, and postrequisites.
-- **Easter Egg**: Enjoy a fun hidden animation on the website.
 
 ## 📂 Project Structure
 
