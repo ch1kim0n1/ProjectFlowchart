@@ -405,3 +405,58 @@ body.dark-mode .dropdown-content a:hover {
     height: 50px;
     margin-right: 10px;
 }
+
+/* Center Table */
+#courseTable {
+    margin: 0 auto;
+    max-width: 80%;
+}
+
+/* New Styles for Search Bar */
+#searchContainer {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+#searchBox {
+    width: 300px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    color: #333;
+    border-radius: 4px;
+    margin-right: 10px;
+}
+
+body.dark-mode #searchBox {
+    border-color: #555;
+    background-color: #222;
+    color: #fff;
+}
+
+#searchButton {
+    padding: 10px 20px;
+    border: none;
+    background-color: #333;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+#searchButton:hover {
+    background-color: #555;
+}
+
+#backButton {
+    padding: 10px 20px;
+    border: none;
+    background-color: #333;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+#backButton:hover {
+    background-color: #555;
+}

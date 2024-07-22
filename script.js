@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const currentMajorDisplay = document.getElementById('currentMajor');
     const modeToggle = document.getElementById('modeToggle');
     const modeTitle = document.getElementById('modeTitle');
+    const colorKey = document.getElementById('colorKey');
     const majorNames = {
         CE: "Computer Engineering",
         CS: "Computer Science",
@@ -40,6 +41,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function createTable() {
         courseTable.innerHTML = ''; // Clear existing content
+        colorKey.style.display = 'block'; // Show color key
         const semesters = Array.from(new Set(courseData.courses.map(course => course.semester))).sort();
         semesters.forEach(semester => {
             const courses = courseData.getCoursesBySemester(semester);
@@ -175,32 +177,59 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     function displaySearchResults(courses) {
-        courseTable.innerHTML = '';
-        const row = document.createElement('tr');
+        courseTable.innerHTML = ''; // Clear existing content
+        colorKey.style.display = 'none'; // Hide color key
+
+        if (courses.length === 0) {
+            const noResults = document.createElement('tr');
+            const noResultsCell = document.createElement('td');
+            noResultsCell.colSpan = 5; // Assuming 5 columns in the table
+            noResultsCell.textContent = 'No courses found';
+            noResultsCell.style.textAlign = 'center';
+            noResults.appendChild(noResultsCell);
+            courseTable.appendChild(noResults);
+            return;
+        }
+
+        const tableHeader = document.createElement('tr');
+        const headers = ['Course Code', 'Course Name', 'Credits', 'Semester', 'Description'];
+
+        headers.forEach(headerText => {
+            const header = document.createElement('th');
+            header.textContent = headerText;
+            tableHeader.appendChild(header);
+        });
+
+        courseTable.appendChild(tableHeader);
+
         courses.forEach(course => {
-            const courseCell = document.createElement('td');
-            courseCell.classList.add('course-cell');
-            courseCell.dataset.courseId = course.id;
+            const row = document.createElement('tr');
+            const courseCodeCell = document.createElement('td');
+            const courseNameCell = document.createElement('td');
+            const courseCreditsCell = document.createElement('td');
+            const courseSemesterCell = document.createElement('td');
+            const courseDescriptionCell = document.createElement('td');
 
-            const courseCode = document.createElement('span');
-            courseCode.textContent = course.code;
-            courseCode.classList.add('course-code');
+            courseCodeCell.textContent = course.code;
+            courseNameCell.textContent = course.name;
+            courseCreditsCell.textContent = parseInt(course.code.match(/\d+/)[0].charAt(1));
+            courseSemesterCell.textContent = course.semester;
+            courseDescriptionCell.textContent = course.description || 'No description available';
 
-            const courseName = document.createElement('span');
-            courseName.textContent = course.name;
-            courseName.classList.add('course-name');
-
-            courseCell.appendChild(courseCode);
-            courseCell.appendChild(courseName);
+            row.appendChild(courseCodeCell);
+            row.appendChild(courseNameCell);
+            row.appendChild(courseCreditsCell);
+            row.appendChild(courseSemesterCell);
+            row.appendChild(courseDescriptionCell);
 
             // Hover event listeners
-            courseCell.addEventListener('mouseenter', handleMouseEnter);
-            courseCell.addEventListener('mouseleave', handleMouseLeave);
-            courseCell.addEventListener('click', handleCourseClick);
+            row.addEventListener('mouseenter', handleMouseEnter);
+            row.addEventListener('mouseleave', handleMouseLeave);
+            row.addEventListener('click', handleCourseClick);
 
-            row.appendChild(courseCell);
+            courseTable.appendChild(row);
         });
-        courseTable.appendChild(row);
+
         backButton.style.display = 'block'; // Show back button after search results are displayed
     }
 
