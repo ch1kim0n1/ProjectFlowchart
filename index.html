@@ -4,19 +4,19 @@
     <link rel="icon" href="assets/utd_png.png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Course Planner</title>
+    <title>Project Flowchart</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
         <nav>
             <!-- Add functionality to the navigation menu -->
-            <a href="#home">Home</a>
-            <a href="#about">About</a>
+            <a href="home.html">Home</a>
+            <a href="about.html">About</a>
             <div class="dropdown">
                 <button class="dropbtn">Select Major</button>
                 <div class="dropdown-content">
-                    <a href="#" onclick="setMajor('CE')">CE</a>
+                    <a href="index.html" onclick="setMajor('CE')">CE</a>
                     <a href="#" onclick="setMajor('CS')">CS</a>
                     <a href="#" onclick="setMajor('MECH')">MECH</a>
                     <a href="#" onclick="setMajor('EE')">EE</a>
@@ -31,6 +31,8 @@
         <button id="searchButton">Search</button>
         <button id="backButton" style="display:none;">Back</button>
     </div>
+
+    <h2 id="currentMajor">Current Major: Computer Engineering</h2>
 
     <table id="courseTable"></table>
 
@@ -56,8 +58,8 @@
     </div>
 
     <footer>
-        <p>&copy; 2024 Course Planner. All rights reserved.</p>
-        <p>Made by Vladislav, Armaan and Divya</p>
+        <p>&copy; 2024 Project Flowchart. All rights reserved.</p>
+        <p>Made by Vladislav, Armaan, Divya, and Arnav</p>
     </footer>
 
     <script src="data.js"></script>

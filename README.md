@@ -1,8 +1,8 @@
 # Project Flowchart
 
-![Course Planner Logo](assets/utd_png.png)
+![Project Flowchart Logo](assets/utd_png.png)
 
-Welcome to the **Project Flowchart**! This web application is providing detailed information about various degree plans, courses, including prerequisites, corequisites, and postrequisites. 
+Welcome to the **Project Flowchart**! This web application is providing detailed information about various degree plans, courses, including prerequisites, corequisites, and postrequisites.
 
 Built with ❤️ by Vladislav, Armaan, and Divya.
 
@@ -28,13 +28,14 @@ Course-Planner/
 ```
 
 ## 📋 Usage
+
 1. Clone the repository:
-git clone https://github.com/ch1kim0n1/course-planner.git
+   git clone https://github.com/ch1kim0n1/course-planner.git
 
 2. Navigate to the project directory:
-cd course-planner
+   cd course-planner
 
-3. Open index.html in your web browser to start using the Course Planner.
+3. Open index.html in your web browser to start using the Project Flowchart.
 
 ## 📸 Screenshot
 

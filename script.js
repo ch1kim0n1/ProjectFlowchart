@@ -1,5 +1,3 @@
-//NOTE: Core courses are unclickable and have no description.
-
 document.addEventListener('DOMContentLoaded', function() {
     const courseData = getData();
     const courseTable = document.getElementById('courseTable');
@@ -12,6 +10,14 @@ document.addEventListener('DOMContentLoaded', function() {
     const searchBox = document.getElementById('searchBox');
     const searchButton = document.getElementById('searchButton');
     const backButton = document.getElementById('backButton');
+    const currentMajorDisplay = document.getElementById('currentMajor');
+    const majorNames = {
+        CE: "Computer Engineering",
+        CS: "Computer Science",
+        MECH: "Mechanical Engineering",
+        EE: "Electrical Engineering"
+    };
+
 
     function createTable() {
         courseTable.innerHTML = ''; // Clear existing content
@@ -179,12 +185,14 @@ document.addEventListener('DOMContentLoaded', function() {
         backButton.style.display = 'block'; // Show back button after search results are displayed
     }
 
-    // Set major
     window.setMajor = function(selectedMajor) {
         major = selectedMajor;
+        const fullMajorName = majorNames[major];
+        currentMajorDisplay.textContent = `Current Major: ${fullMajorName}`;
         // Update the course table based on the selected major
         createTable();
-    }
+    };
+    
 
     closeBtn.addEventListener('click', () => {
         coursePopup.style.display = "none";
