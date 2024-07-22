@@ -74,7 +74,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const course = courseData.getCourseById(Number(courseId));
             popupCourseName.textContent = course.name;
             popupCourseCredits.textContent = parseInt(course.code.match(/\d+/)[0].charAt(1)); //the amount of credits given per course
-            popupCourseDescription.textContent = "Course description goes here."; // Update with actual description if available. ADD LATER!!!
+            popupCourseDescription.textContent = course.description || 'No description available';
             popupCourseSemester.textContent = course.semester;
             popupCoursePrerequisites.textContent = course.prerequisites.join(', ') || 'None';
             popupCourseCorequisites.textContent = course.corequisites.join(', ') || 'None';
