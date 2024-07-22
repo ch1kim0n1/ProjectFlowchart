@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const courseData = getData();
+    let courseData = getData();
     const courseTable = document.getElementById('courseTable');
     const coursePopup = document.getElementById('coursePopup');
     const popupCourseName = document.getElementById('popupCourseName');
@@ -237,8 +237,15 @@ document.addEventListener('DOMContentLoaded', function() {
         major = selectedMajor;
         const fullMajorName = majorNames[major];
         currentMajorDisplay.textContent = `Current Major: ${fullMajorName}`;
-        // Update the course table based on the selected major
-        createTable();
+
+        // Dynamically load the data file based on the selected major
+        const scriptElement = document.createElement('script');
+        scriptElement.src = major === 'CS' ? 'cs_data.js' : 'data.js';
+        scriptElement.onload = function() {
+            courseData = getData();
+            createTable();
+        };
+        document.head.appendChild(scriptElement);
     };
 
     closeBtn.addEventListener('click', () => {
