@@ -460,3 +460,76 @@ body.dark-mode #searchBox {
 #backButton:hover {
     background-color: #555;
 }
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 600px;
+    text-align: center;
+}
+
+body.dark-mode .modal-content {
+    background-color: #333;
+    color: #fff;
+    border-color: #555;
+}
+
+.modal-content h2 {
+    margin-top: 0;
+}
+
+.modal-content p {
+    margin-bottom: 20px;
+}
+
+.modal-content label {
+    display: block;
+    margin-bottom: 20px;
+}
+
+.modal-content button {
+    background-color: #cccccc;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    cursor: not-allowed;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.modal-content button:enabled {
+    background-color: #007BFF;
+    cursor: pointer;
+}
+
+.modal-content button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}
+
+body.dark-mode .modal-content button {
+    color: #fff;
+}
+
+body.dark-mode .modal-content button:disabled {
+    background-color: #777;
+}
+
+body.dark-mode .modal-content button:enabled {
+    background-color: #007BFF;
+}
