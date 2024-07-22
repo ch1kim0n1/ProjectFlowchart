@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const closeBtn = document.querySelector('.close-btn');
     const searchBox = document.getElementById('searchBox');
     const searchButton = document.getElementById('searchButton');
-    let major = 'CE'; // Default major
+    const backButton = document.getElementById('backButton');
 
     function createTable() {
         courseTable.innerHTML = ''; // Clear existing content
@@ -134,6 +134,11 @@ document.addEventListener('DOMContentLoaded', function() {
         coursePopup.style.display = "none";
     });
 
+    backButton.addEventListener('click', function() {
+        createTable();
+        backButton.style.display = 'none'; // Hide back button after returning to the course table
+    });
+
     // Search functionality
     searchButton.addEventListener('click', function() {
         const searchTerm = searchBox.value.toLowerCase();
@@ -151,26 +156,27 @@ document.addEventListener('DOMContentLoaded', function() {
             const courseCell = document.createElement('td');
             courseCell.classList.add('course-cell');
             courseCell.dataset.courseId = course.id;
-
+    
             const courseCode = document.createElement('span');
             courseCode.textContent = course.code;
             courseCode.classList.add('course-code');
-
+    
             const courseName = document.createElement('span');
             courseName.textContent = course.name;
             courseName.classList.add('course-name');
-
+    
             courseCell.appendChild(courseCode);
             courseCell.appendChild(courseName);
-
+    
             // Hover event listeners
             courseCell.addEventListener('mouseenter', handleMouseEnter);
             courseCell.addEventListener('mouseleave', handleMouseLeave);
             courseCell.addEventListener('click', handleCourseClick);
-
+    
             row.appendChild(courseCell);
         });
         courseTable.appendChild(row);
+        backButton.style.display = 'block'; // Show back button after search results are displayed
     }
 
     // Set major
