@@ -1,7 +1,5 @@
-//NOTE: Core courses are unclickable and have no description.
-
 document.addEventListener('DOMContentLoaded', function() {
-    const courseData = getData();
+    let courseData = getData();
     const courseTable = document.getElementById('courseTable');
     const coursePopup = document.getElementById('coursePopup');
     const popupCourseName = document.getElementById('popupCourseName');
@@ -11,10 +9,39 @@ document.addEventListener('DOMContentLoaded', function() {
     const closeBtn = document.querySelector('.close-btn');
     const searchBox = document.getElementById('searchBox');
     const searchButton = document.getElementById('searchButton');
-    let major = 'CE'; // Default major
+    const backButton = document.getElementById('backButton');
+    const currentMajorDisplay = document.getElementById('currentMajor');
+    const modeToggle = document.getElementById('modeToggle');
+    const modeTitle = document.getElementById('modeTitle');
+    const colorKey = document.getElementById('colorKey');
+    const majorNames = {
+        CE: "Computer Engineering",
+        CS: "Computer Science",
+        MECH: "Mechanical Engineering",
+        EE: "Electrical Engineering"
+    };
+
+    // Apply saved theme mode
+    const savedMode = localStorage.getItem('theme') || 'dark';
+    document.body.className = savedMode + '-mode';
+    modeToggle.checked = savedMode === 'dark';
+    modeTitle.textContent = savedMode.charAt(0).toUpperCase() + savedMode.slice(1) + ' Mode';
+
+    modeToggle.addEventListener('change', function() {
+        if (modeToggle.checked) {
+            document.body.className = 'dark-mode';
+            localStorage.setItem('theme', 'dark');
+            modeTitle.textContent = 'Dark Mode';
+        } else {
+            document.body.className = 'light-mode';
+            localStorage.setItem('theme', 'light');
+            modeTitle.textContent = 'Light Mode';
+        }
+    });
 
     function createTable() {
         courseTable.innerHTML = ''; // Clear existing content
+        colorKey.style.display = 'block'; // Show color key
         const semesters = Array.from(new Set(courseData.courses.map(course => course.semester))).sort();
         semesters.forEach(semester => {
             const courses = courseData.getCoursesBySemester(semester);
@@ -74,7 +101,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const course = courseData.getCourseById(Number(courseId));
             popupCourseName.textContent = course.name;
             popupCourseCredits.textContent = parseInt(course.code.match(/\d+/)[0].charAt(1)); //the amount of credits given per course
-            popupCourseDescription.textContent = "Course description goes here."; // Update with actual description if available. ADD LATER!!!
+            popupCourseDescription.textContent = course.description || 'No description available';
             popupCourseSemester.textContent = course.semester;
             popupCoursePrerequisites.textContent = course.prerequisites.join(', ') || 'None';
             popupCourseCorequisites.textContent = course.corequisites.join(', ') || 'None';
@@ -134,6 +161,11 @@ document.addEventListener('DOMContentLoaded', function() {
         coursePopup.style.display = "none";
     });
 
+    backButton.addEventListener('click', function() {
+        createTable();
+        backButton.style.display = 'none'; // Hide back button after returning to the course table
+    });
+
     // Search functionality
     searchButton.addEventListener('click', function() {
         const searchTerm = searchBox.value.toLowerCase();
@@ -145,40 +177,76 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     function displaySearchResults(courses) {
-        courseTable.innerHTML = '';
-        const row = document.createElement('tr');
+        courseTable.innerHTML = ''; // Clear existing content
+        colorKey.style.display = 'none'; // Hide color key
+
+        if (courses.length === 0) {
+            const noResults = document.createElement('tr');
+            const noResultsCell = document.createElement('td');
+            noResultsCell.colSpan = 5; // Assuming 5 columns in the table
+            noResultsCell.textContent = 'No courses found';
+            noResultsCell.style.textAlign = 'center';
+            noResults.appendChild(noResultsCell);
+            courseTable.appendChild(noResults);
+            return;
+        }
+
+        const tableHeader = document.createElement('tr');
+        const headers = ['Course Code', 'Course Name', 'Credits', 'Semester', 'Description'];
+
+        headers.forEach(headerText => {
+            const header = document.createElement('th');
+            header.textContent = headerText;
+            tableHeader.appendChild(header);
+        });
+
+        courseTable.appendChild(tableHeader);
+
         courses.forEach(course => {
-            const courseCell = document.createElement('td');
-            courseCell.classList.add('course-cell');
-            courseCell.dataset.courseId = course.id;
+            const row = document.createElement('tr');
+            const courseCodeCell = document.createElement('td');
+            const courseNameCell = document.createElement('td');
+            const courseCreditsCell = document.createElement('td');
+            const courseSemesterCell = document.createElement('td');
+            const courseDescriptionCell = document.createElement('td');
 
-            const courseCode = document.createElement('span');
-            courseCode.textContent = course.code;
-            courseCode.classList.add('course-code');
+            courseCodeCell.textContent = course.code;
+            courseNameCell.textContent = course.name;
+            courseCreditsCell.textContent = parseInt(course.code.match(/\d+/)[0].charAt(1));
+            courseSemesterCell.textContent = course.semester;
+            courseDescriptionCell.textContent = course.description || 'No description available';
 
-            const courseName = document.createElement('span');
-            courseName.textContent = course.name;
-            courseName.classList.add('course-name');
-
-            courseCell.appendChild(courseCode);
-            courseCell.appendChild(courseName);
+            row.appendChild(courseCodeCell);
+            row.appendChild(courseNameCell);
+            row.appendChild(courseCreditsCell);
+            row.appendChild(courseSemesterCell);
+            row.appendChild(courseDescriptionCell);
 
             // Hover event listeners
-            courseCell.addEventListener('mouseenter', handleMouseEnter);
-            courseCell.addEventListener('mouseleave', handleMouseLeave);
-            courseCell.addEventListener('click', handleCourseClick);
+            row.addEventListener('mouseenter', handleMouseEnter);
+            row.addEventListener('mouseleave', handleMouseLeave);
+            row.addEventListener('click', handleCourseClick);
 
-            row.appendChild(courseCell);
+            courseTable.appendChild(row);
         });
-        courseTable.appendChild(row);
+
+        backButton.style.display = 'block'; // Show back button after search results are displayed
     }
 
-    // Set major
     window.setMajor = function(selectedMajor) {
         major = selectedMajor;
-        // Update the course table based on the selected major
-        createTable();
-    }
+        const fullMajorName = majorNames[major];
+        currentMajorDisplay.textContent = `Current Major: ${fullMajorName}`;
+
+        // Dynamically load the data file based on the selected major
+        const scriptElement = document.createElement('script');
+        scriptElement.src = major === 'CS' ? 'cs_data.js' : 'data.js';
+        scriptElement.onload = function() {
+            courseData = getData();
+            createTable();
+        };
+        document.head.appendChild(scriptElement);
+    };
 
     closeBtn.addEventListener('click', () => {
         coursePopup.style.display = "none";
@@ -190,6 +258,5 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    
     createTable();
 });
