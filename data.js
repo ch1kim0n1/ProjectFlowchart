@@ -37,8 +37,8 @@ function getData() {
             new Course(4, "CS 1436", "Programming Fundamentals", [], [], "1", "Introduction to programming using a high-level language. Emphasizes problem-solving techniques and algorithm development."),
             //--------------------SEMESTER 2--------------------
             new Course(5, "ENGR 2300", "Linear Algebra for Engineers", [], [], "2", "Linear algebra concepts tailored for engineering applications. Focuses on matrix operations and vector spaces."),
-            new Course(6, "MATH 2414", "Calculus II", ["MATH 2415"], [], "2", "Continuation of Calculus I, covering techniques of integration and series. Critical for students pursuing advanced studies in mathematics."),
-            new Course(7, "PHYS 2325/2125", "Mechanics and Lab", ["PHYS 2326/2126"], [], "2", "Fundamentals of mechanics, including motion and forces. Accompanied by a lab to provide hands-on experience."),
+            new Course(6, "MATH 2414", "Calculus II", [], [], "2", "Continuation of Calculus I, covering techniques of integration and series. Critical for students pursuing advanced studies in mathematics."),
+            new Course(7, "PHYS 2325/2125", "Mechanics and Lab", [], [], "2", "Fundamentals of mechanics, including motion and forces. Accompanied by a lab to provide hands-on experience."),
             new Course(8, "CE 1337", "Computer Science I", ["CS 1436"], [], "2", "Introduction to computer science and programming. Covers basic concepts and structures in computer science."),
             new Course(9, "CE 1202", "Intro to Computer Eng II", ["CE 1100"], [], "2", "Continuation of Intro to Computer Engineering. Delves deeper into computer systems and engineering principles."),
             new Course(10, "CE 2310", "Intro to Digital Systems", [], [], "2", "Introduction to the design and analysis of digital systems. Focuses on logic design and digital circuit principles."),

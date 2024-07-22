@@ -11,6 +11,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const searchButton = document.getElementById('searchButton');
     const backButton = document.getElementById('backButton');
     const currentMajorDisplay = document.getElementById('currentMajor');
+    const modeToggle = document.getElementById('modeToggle');
+    const modeTitle = document.getElementById('modeTitle');
     const majorNames = {
         CE: "Computer Engineering",
         CS: "Computer Science",
@@ -18,6 +20,23 @@ document.addEventListener('DOMContentLoaded', function() {
         EE: "Electrical Engineering"
     };
 
+    // Apply saved theme mode
+    const savedMode = localStorage.getItem('theme') || 'dark';
+    document.body.className = savedMode + '-mode';
+    modeToggle.checked = savedMode === 'dark';
+    modeTitle.textContent = savedMode.charAt(0).toUpperCase() + savedMode.slice(1) + ' Mode';
+
+    modeToggle.addEventListener('change', function() {
+        if (modeToggle.checked) {
+            document.body.className = 'dark-mode';
+            localStorage.setItem('theme', 'dark');
+            modeTitle.textContent = 'Dark Mode';
+        } else {
+            document.body.className = 'light-mode';
+            localStorage.setItem('theme', 'light');
+            modeTitle.textContent = 'Light Mode';
+        }
+    });
 
     function createTable() {
         courseTable.innerHTML = ''; // Clear existing content
@@ -162,23 +181,23 @@ document.addEventListener('DOMContentLoaded', function() {
             const courseCell = document.createElement('td');
             courseCell.classList.add('course-cell');
             courseCell.dataset.courseId = course.id;
-    
+
             const courseCode = document.createElement('span');
             courseCode.textContent = course.code;
             courseCode.classList.add('course-code');
-    
+
             const courseName = document.createElement('span');
             courseName.textContent = course.name;
             courseName.classList.add('course-name');
-    
+
             courseCell.appendChild(courseCode);
             courseCell.appendChild(courseName);
-    
+
             // Hover event listeners
             courseCell.addEventListener('mouseenter', handleMouseEnter);
             courseCell.addEventListener('mouseleave', handleMouseLeave);
             courseCell.addEventListener('click', handleCourseClick);
-    
+
             row.appendChild(courseCell);
         });
         courseTable.appendChild(row);
@@ -192,7 +211,6 @@ document.addEventListener('DOMContentLoaded', function() {
         // Update the course table based on the selected major
         createTable();
     };
-    
 
     closeBtn.addEventListener('click', () => {
         coursePopup.style.display = "none";
@@ -204,6 +222,5 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    
     createTable();
 });
