@@ -2,11 +2,16 @@
 
 ![Project Flowchart Logo](assets/utd_png.png)
 
-Welcome to the **Project Flowchart**! This web application is providing detailed information about various degree plans, courses, including prerequisites, corequisites, and postrequisites.
+Welcome to Project Flowchart! This web application provides detailed information about various degree plans and courses, including prerequisites, corequisites, and postrequisites.
 
-Built with ❤️ by Vladislav, Armaan, and Divya.
+### Contributors
 
-## 🚀 Features
+- Vladislav
+- Armaan 
+- Divya
+- Arnav
+
+## Features
 
 - **Navigation Menu**: Easily access the Home and About sections.
 - **Major Selection**: Choose your major from CE, CS, MECH, and EE to see relevant courses.
@@ -14,29 +19,36 @@ Built with ❤️ by Vladislav, Armaan, and Divya.
 - **Detailed Course Information**: View course details including credits, description, semester, prerequisites, and corequisites in a popup window.
 - **Color Key**: Understand course relationships with a color-coded key for prerequisites, corequisites, and postrequisites.
 
-## 📂 Project Structure
+## Project Structure
 
-```plaintext
-Course-Planner/
-├── assets/
-│   └── utd_png.png        # Logo used in the header and search bar
-├── styles.css             # Stylesheet for the application
-├── index.html             # Main HTML file
-├── data.js                # JavaScript file with course data
-├── script.js              # JavaScript file for functionality
-└── README.md              # This README file
-```
+    ProjectFlowchart/
+    ├── assets/
+    │   └── utd_png.png        # Logo used in the header and search bar
+    ├── styles.css             # Stylesheet for the application
+    ├── index.html             # Main HTML file
+    ├── data.js                # JavaScript file with course data
+    ├── script.js              # JavaScript file for functionality
+    ├── about.html             # About page HTML file
+    ├── home.html              # Home page HTML file
+    ├── cs_data.js             # JavaScript file with CS course data
+    ├── Info_folder/           # Folder containing additional info
+    └── README.md              # This README file
 
-## 📋 Usage
+## Usage
 
-1. Clone the repository:
-   git clone https://github.com/ch1kim0n1/course-planner.git
+1. Clone the repository: 
+    ```sh
+    git clone https://github.com/Melon-tree/ProjectFlowchart.git
+    ```
 
-2. Navigate to the project directory:
-   cd course-planner
+2. Navigate to the project directory: 
+    ```sh
+    cd ProjectFlowchart
+    ```
 
-3. Open index.html in your web browser to start using the Project Flowchart.
+3. Open `index.html` in your web browser to start using the Project Flowchart.
 
-## 📸 Screenshot
+## Screenshot
 
-![image](https://github.com/user-attachments/assets/356ad933-03ee-43c0-80ff-44a658e6f76b)
+![image](https://github.com/user-attachments/assets/5809e2fa-74b2-4f5c-9368-a3db499539af)
+
