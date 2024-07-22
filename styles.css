@@ -40,10 +40,16 @@ th {
     cursor: pointer;
     position: relative;
     background-color: #1e1e1e;
+    animation: fadeIn 0.4s ease-in-out;
+    transition: background-color 0.3s ease;
 }
 
 .course-cell:hover {
-    background-color: #333;
+    background-color: #555;
+}
+
+#popupContent {
+    animation: fadeIn 0.35s ease-in-out;
 }
 
 .course-code {
@@ -193,14 +199,6 @@ footer a:hover {
 @keyframes fadeIn {
     from { opacity: 0; }
     to { opacity: 1; }
-}
-
-.course-cell {
-    animation: fadeIn 0.5s ease-in-out;
-}
-
-#popupContent {
-    animation: fadeIn 0.3s ease-in-out;
 }
 
 /* Dropdown Menu - NEED TO ADD FUNCTIONALITY TO IT */
