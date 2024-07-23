@@ -304,24 +304,6 @@ body.dark-mode .close-btn:focus {
     margin-bottom: 20px;
 }
 
-#courseFilter, #scoreFilter, #creditFilter {
-    width: 200px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    background-color: #fff;
-    color: #333;
-    border-radius: 4px;
-    margin-right: 10px;
-}
-
-body.dark-mode #courseFilter, 
-body.dark-mode #scoreFilter, 
-body.dark-mode #creditFilter {
-    border-color: #555;
-    background-color: #222;
-    color: #fff;
-}
-
 #filterButton, #resetButton {
     padding: 10px 20px;
     border: none;
@@ -403,3 +385,43 @@ body.dark-mode .dropdown-content a:hover {
     margin: 0 auto;
     max-width: 80%;
 }
+
+#filterContainer {
+    display: flex;
+    justify-content: center;
+    gap: 10px; /* Space between the elements */
+    margin-bottom: 20px;
+    flex-wrap: wrap; /* Allows the elements to wrap onto the next line if the screen is narrow */
+}
+
+#courseFilter, #scoreFilter, #creditFilter {
+    width: 200px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    color: #333;
+    border-radius: 4px;
+    margin-right: 10px;
+}
+
+body.dark-mode #courseFilter, 
+body.dark-mode #scoreFilter, 
+body.dark-mode #creditFilter {
+    border-color: #555;
+    background-color: #222;
+    color: #fff;
+}
+
+#filterButton, #resetButton {
+    padding: 10px 20px;
+    border: none;
+    background-color: #333;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+#filterButton:hover, #resetButton:hover {
+    background-color: #555;
+}
+
