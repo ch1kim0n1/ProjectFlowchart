@@ -1,5 +1,12 @@
 document.addEventListener('DOMContentLoaded', function() {
-    let courseData = getData();
+    let courseData;
+    try {
+        courseData = getData();
+    } catch (error) {
+        console.error('Error getting course data:', error);
+        return;
+    }
+    
     const courseTable = document.getElementById('courseTable');
     const coursePopup = document.getElementById('coursePopup');
     const popupCourseName = document.getElementById('popupCourseName');
@@ -24,20 +31,21 @@ document.addEventListener('DOMContentLoaded', function() {
         EE: "Electrical Engineering"
     };
 
-    disclaimerModal.style.display = 'block';
+    if (disclaimerModal) {
+        disclaimerModal.style.display = 'block';
 
-    acknowledgeCheckbox.addEventListener('change', function() {
-        if (acknowledgeCheckbox.checked) {
-            closeDisclaimer.disabled = false;
-        } else {
-            closeDisclaimer.disabled = true;
-        }
-    });
+        acknowledgeCheckbox.addEventListener('change', function() {
+            if (acknowledgeCheckbox.checked) {
+                closeDisclaimer.disabled = false;
+            } else {
+                closeDisclaimer.disabled = true;
+            }
+        });
 
-    closeDisclaimer.addEventListener('click', function() {
-        disclaimerModal.style.display = 'none';
-    });
- 
+        closeDisclaimer.addEventListener('click', function() {
+            disclaimerModal.style.display = 'none';
+        });
+    }
 
     // Apply saved theme mode
     const savedMode = localStorage.getItem('theme') || 'dark';
@@ -175,26 +183,33 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Close popup
-    closeBtn.addEventListener('click', function() {
-        coursePopup.style.display = "none";
-    });
+    if (closeBtn) {
+        closeBtn.addEventListener('click', function() {
+            coursePopup.style.display = "none";
+        });
+    }
 
-    backButton.addEventListener('click', function() {
-        createTable();
-        backButton.style.display = 'none'; // Hide back button after returning to the course table
-    });
+    if (backButton) {
+        backButton.addEventListener('click', function() {
+            createTable();
+            backButton.style.display = 'none'; // Hide back button after returning to the course table
+        });
+    }
 
     // Search functionality
-    searchButton.addEventListener('click', function() {
-        const searchTerm = searchBox.value.toLowerCase();
-        const courses = courseData.courses.filter(course => 
-            course.name.toLowerCase().includes(searchTerm) ||
-            course.code.toLowerCase().includes(searchTerm)
-        );
-        displaySearchResults(courses);
-    });
+    if (searchButton) {
+        searchButton.addEventListener('click', function() {
+            const searchTerm = searchBox.value.toLowerCase();
+            const courses = courseData.courses.filter(course => 
+                course.name.toLowerCase().includes(searchTerm) ||
+                course.code.toLowerCase().includes(searchTerm)
+            );
+            displaySearchResults(courses);
+        });
+    }
 
     function displaySearchResults(courses) {
+        if (!courseTable) return;
         courseTable.innerHTML = ''; // Clear existing content
         colorKey.style.display = 'none'; // Hide color key
 
@@ -252,29 +267,39 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     window.setMajor = function(selectedMajor) {
-        major = selectedMajor;
-        const fullMajorName = majorNames[major];
+        const fullMajorName = majorNames[selectedMajor];
         currentMajorDisplay.textContent = `Current Major: ${fullMajorName}`;
 
         // Dynamically load the data file based on the selected major
         const scriptElement = document.createElement('script');
-        scriptElement.src = major === 'CS' ? 'cs_data.js' : 'data.js';
+        
+        if(selectedMajor == "CS")
+        {
+            scriptElement.src = `./data_folder/cs_data.js`;
+        }
+        else if (selectedMajor == "MECH")
+        {
+            scriptElement.src = `./data_folder/mech_data.js`;
+        }
+        else if(selectedMajor == "CE")
+        {
+            scriptElement.src = `./data_folder/ce_data.js`;
+        }
+        else
+        {
+            scriptElement.src = `./data_folder/ee_data.js`;
+        }
+        
         scriptElement.onload = function() {
-            courseData = getData();
-            createTable();
+            try {
+                courseData = getData();
+                createTable();
+            } catch (error) {
+                console.error('Error loading course data:', error);
+            }
         };
         document.head.appendChild(scriptElement);
     };
-
-    closeBtn.addEventListener('click', () => {
-        coursePopup.style.display = "none";
-    });
-
-    window.addEventListener('click', (event) => {
-        if (event.target === coursePopup) {
-            coursePopup.style.display = "none";
-        }
-    });
 
     createTable();
 });

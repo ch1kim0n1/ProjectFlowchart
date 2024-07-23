@@ -1,20 +1,6 @@
 function getData() {
-    // Added just in case we want to check if a current student has taken a course
-    const Status = {
-        Complete: "complete",
-        Current: "current",
-        Failed: "failed"
-    }
 
     class Course {
-        id;
-        code;
-        name;
-        prerequisites;
-        corequisites;
-        semester;
-        description;
-
         constructor(id, code, name, prerequisites = [], corequisites = [], semester, description = "") {
             this.id = id;
             this.code = code;
@@ -27,8 +13,9 @@ function getData() {
     }
 
     let courseData = {
-        // Commented out courses are not "required" but are still part of the degree plan
         courses: [
+            //new Course(id, code, name, prereq [], coreq[], semester, desc [])
+            
             //--------------------SEMESTER 1--------------------
             new Course(0, "ECS 1100", "Intro to Engr & CS", [], [], "1", "An introduction to the fields of engineering and computer science. This course provides a broad overview of the professions."),
             new Course(1, "CE 1100", "Intro to Comp Eng", [], [], "1", "Basic principles and concepts in computer engineering. Students will learn about the various components and systems involved."),

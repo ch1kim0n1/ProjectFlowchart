@@ -1,20 +1,6 @@
 function getData() {
-    // Added just in case we want to check if a current student has taken a course
-    const Status = {
-        Complete: "complete",
-        Current: "current",
-        Failed: "failed"
-    }
 
     class Course {
-        id;
-        code;
-        name;
-        prerequisites;
-        corequisites;
-        semester;
-        description;
-
         constructor(id, code, name, prerequisites = [], corequisites = [], semester, description = "") {
             this.id = id;
             this.code = code;
@@ -27,8 +13,9 @@ function getData() {
     }
 
     let courseData = {
-        // Commented out courses are not "required" but are still part of the degree plan
         courses: [
+            //new Course(id, code, name, prereq [], coreq[], semester, desc [])
+            
             //--------------------SEMESTER 1--------------------
             new Course(0, "ECS 1100", "Intro to Eng and CS", [], [], "1", "An introduction to the fields of engineering and computer science. This course provides a broad overview of the professions."),
             new Course(1, "CS 1325", "Introduction to Programming", [], [], "1", "Introduction to computer science and software engineering principles."),
@@ -56,7 +43,7 @@ function getData() {
             new Course(15, "ENGR 3300", "Advanced Engineering Mathematics", [], [], "4", "Core curriculum requirement. Covers a range of foundational topics necessary for a well-rounded education."),
             new Course(16, "EE 3320", "Digital Circuits", [], [], "4", "Focuses on communication skills necessary for engineers. Includes technical writing and presentation skills."),
             new Course(34, "EE 3310", "Electronic Devices", ["MATH 2414", "CS 2305", "MATH 2418"], [], "4", "Basics of probability and statistics with computer science and software engineering applications."),
-            new Course(PUT A RANDOM ID IDK LOL, "CHEM 1311/1111", "General Chemistry and Lab", FIX THE REST VLAD TY :D)
+            new Course(51, "CHEM 1311/1111", "General Chemistry and Lab", [], [], "4", "Core curriculum requirement. Covers a range of foundational topics necessary for a well-rounded education."),
             //--------------------SEMESTER 5--------------------
             new Course(17, "EE 3202", "Fundamentals II Lab", [], [], "5", "Covers software engineering principles and practices. Focuses on design, implementation, and testing of software."),
             new Course(18, "EE 3311", "Electronic Circuits", ["CS 2305", "PHYS 2326/2126"], [], "5", "Study of digital logic and computer design principles with lab."),
