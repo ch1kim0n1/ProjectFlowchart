@@ -10,6 +10,7 @@
 <body class="dark-mode">
     <header>
         <nav>
+            <a href="ap_credit.html">AP Credit</a>
             <a href="home.html">Home</a>
             <a href="about.html">About</a>
             <div class="dropdown">
@@ -67,6 +68,18 @@
             <input type="checkbox" id="modeToggle" checked>
             <span class="slider"></span>
         </label>
+    </div>
+
+    <div id="disclaimerModal" class="modal">
+        <div class="modal-content">
+            <h2>Disclaimer</h2>
+            <p>This project is not affiliated with UTD at any point and is made by enthusiasts. By clicking "Acknowledge", you agree that you have read and understood this disclaimer.</p>
+            <label>
+                <input type="checkbox" id="acknowledgeCheckbox"> I acknowledge
+            </label>
+            <br>
+            <button id="closeDisclaimer" disabled>Close</button>
+        </div>
     </div>
 
     <script src="data.js"></script>

@@ -14,12 +14,30 @@ document.addEventListener('DOMContentLoaded', function() {
     const modeToggle = document.getElementById('modeToggle');
     const modeTitle = document.getElementById('modeTitle');
     const colorKey = document.getElementById('colorKey');
+    const disclaimerModal = document.getElementById('disclaimerModal');
+    const acknowledgeCheckbox = document.getElementById('acknowledgeCheckbox');
+    const closeDisclaimer = document.getElementById('closeDisclaimer');
     const majorNames = {
         CE: "Computer Engineering",
         CS: "Computer Science",
         MECH: "Mechanical Engineering",
         EE: "Electrical Engineering"
     };
+
+    disclaimerModal.style.display = 'block';
+
+    acknowledgeCheckbox.addEventListener('change', function() {
+        if (acknowledgeCheckbox.checked) {
+            closeDisclaimer.disabled = false;
+        } else {
+            closeDisclaimer.disabled = true;
+        }
+    });
+
+    closeDisclaimer.addEventListener('click', function() {
+        disclaimerModal.style.display = 'none';
+    });
+ 
 
     // Apply saved theme mode
     const savedMode = localStorage.getItem('theme') || 'dark';
