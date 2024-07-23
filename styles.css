@@ -23,10 +23,17 @@ header nav a {
     margin: 0 10px;
     text-decoration: none;
     color: inherit;
+    transition: transform 0.3s ease, background-color 0.3s ease;
 }
 
 header nav a:hover {
     text-decoration: underline;
+    transform: scale(1.1);
+    background-color: #f0f0f0;
+}
+
+body.dark-mode header nav a:hover {
+    background-color: #555;
 }
 
 /* Mode Switcher Styles */
@@ -130,15 +137,19 @@ body.dark-mode th {
     position: relative;
     background-color: inherit;
     animation: fadeIn 0.4s ease-in-out;
-    transition: background-color 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .course-cell:hover {
     background-color: #f0f0f0;
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 body.dark-mode .course-cell:hover {
     background-color: #555;
+    transform: scale(1.10);
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2);
 }
 
 #popupContent {

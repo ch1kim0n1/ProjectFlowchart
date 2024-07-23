@@ -24,26 +24,19 @@ document.addEventListener('DOMContentLoaded', function() {
         EE: "Electrical Engineering"
     };
 
-     // Check if disclaimer has been acknowledged
-     const disclaimerAcknowledged = localStorage.getItem('disclaimerAcknowledged');
+    disclaimerModal.style.display = 'block';
 
-     if (!disclaimerAcknowledged) {
-         // Show disclaimer modal on page load
-         disclaimerModal.style.display = 'block';
- 
-         acknowledgeCheckbox.addEventListener('change', function() {
-             if (acknowledgeCheckbox.checked) {
-                 closeDisclaimer.disabled = false;
-             } else {
-                 closeDisclaimer.disabled = true;
-             }
-         });
- 
-         closeDisclaimer.addEventListener('click', function() {
-             disclaimerModal.style.display = 'none';
-             localStorage.setItem('disclaimerAcknowledged', 'true');
-         });
-     }
+    acknowledgeCheckbox.addEventListener('change', function() {
+        if (acknowledgeCheckbox.checked) {
+            closeDisclaimer.disabled = false;
+        } else {
+            closeDisclaimer.disabled = true;
+        }
+    });
+
+    closeDisclaimer.addEventListener('click', function() {
+        disclaimerModal.style.display = 'none';
+    });
  
 
     // Apply saved theme mode
