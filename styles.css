@@ -482,20 +482,9 @@ body.dark-mode #searchBox {
 
 /* Style for the content container with a semi-transparent background */
 .content-container {
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(255, 255, 255, 0.5);
     padding: 30px;
     border-radius: 10px;
-}
-
-/* Other styles */
-body.dark-mode .about-page {
-    background-color: #121212;
-    color: #ffffff;
-}
-
-body.light-mode .about-page {
-    background-color: #f0f0f0;
-    color: #333;
 }
 
 /* Styles for the animated button */
@@ -517,6 +506,7 @@ body.light-mode .about-page {
 .animated-button:hover {
     background-color: #555;
     transform: scale(1.1);
+}
 
 .modal {
     display: none;
