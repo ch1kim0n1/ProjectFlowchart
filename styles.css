@@ -460,3 +460,10 @@ body.dark-mode #searchBox {
 #backButton:hover {
     background-color: #555;
 }
+body {
+    background-image: url('./assets/UtdBG2.jpeg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+} 
