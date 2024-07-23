@@ -4,13 +4,13 @@
     <link rel="icon" href="assets/utd_png.png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Project Flowchart - AP Credit</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>AP Credit Information</title>
+    <link rel="stylesheet" href="ap_credit_css.css">
 </head>
 <body class="dark-mode">
     <header>
         <nav>
-            <a href="ap_credit.html">AP Credit</a>
+            <a href="./AP_Credit_Page/ap_credit.html">AP Credit</a>
             <a href="home.html">Home</a>
             <a href="about.html">About</a>
             <a href="index.html">Project Flowchart</a>
@@ -18,13 +18,31 @@
     </header>
     <main>
         <h1>AP Credit Information</h1>
-        <p>Details about AP Credit will be available here soon.</p>
+        <div id="filterContainer">
+            <input type="text" id="courseFilter" placeholder="Filter by course...">
+            <input type="number" id="scoreFilter" placeholder="Filter by score...">
+            <input type="text" id="creditFilter" placeholder="Filter by credit awarded...">
+            <button id="filterButton">Filter</button>
+            <button id="resetButton">Reset</button>
+        </div>
+        <table id="apCreditTable">
+            <thead>
+                <tr>
+                    <th>Course</th>
+                    <th>AP Exam</th>
+                    <th>Score</th>
+                    <th>Credit Awarded</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Content will be dynamically inserted here -->
+            </tbody>
+        </table>
     </main>
     <footer>
         <p>&copy; 2024 Project Flowchart. All rights reserved.</p>
         <p>Made by Vladislav, Armaan, Divya, Arnav, and Rishi</p>
     </footer>
-
     <div class="mode-switcher">
         <span id="modeTitle">Dark Mode</span>
         <label class="switch">
@@ -32,7 +50,8 @@
             <span class="slider"></span>
         </label>
     </div>
-    <script src="script.js"></script>
+    <script src="ap_credit_script.js"></script>
+    <script src="data_folder/ap_credit.js"></script>
 
     <script>
         //separate script for mode switcher
@@ -59,5 +78,6 @@
             });
         });
     </script>
+
 </body>
 </html>

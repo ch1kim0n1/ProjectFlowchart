@@ -6,7 +6,6 @@ document.addEventListener('DOMContentLoaded', function() {
         console.error('Error getting course data:', error);
         return;
     }
-    
     const courseTable = document.getElementById('courseTable');
     const coursePopup = document.getElementById('coursePopup');
     const popupCourseName = document.getElementById('popupCourseName');
