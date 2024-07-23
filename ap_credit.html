@@ -22,7 +22,42 @@
     </main>
     <footer>
         <p>&copy; 2024 Project Flowchart. All rights reserved.</p>
-        <p>Made by Vladislav, Armaan, Divya, and Arnav</p>
+        <p>Made by Vladislav, Armaan, Divya, Arnav, and Rishi</p>
     </footer>
+
+    <div class="mode-switcher">
+        <span id="modeTitle">Dark Mode</span>
+        <label class="switch">
+            <input type="checkbox" id="modeToggle" checked>
+            <span class="slider"></span>
+        </label>
+    </div>
+    <script src="script.js"></script>
+
+    <script>
+        //separate script for mode switcher
+        document.addEventListener('DOMContentLoaded', function() {
+            const modeToggle = document.getElementById('modeToggle');
+            const modeTitle = document.getElementById('modeTitle');
+    
+            // Apply saved theme mode
+            const savedMode = localStorage.getItem('theme') || 'dark';
+            document.body.className = savedMode + '-mode';
+            modeToggle.checked = savedMode === 'dark';
+            modeTitle.textContent = savedMode.charAt(0).toUpperCase() + savedMode.slice(1) + ' Mode';
+    
+            modeToggle.addEventListener('change', function() {
+                if (modeToggle.checked) {
+                    document.body.className = 'dark-mode';
+                    localStorage.setItem('theme', 'dark');
+                    modeTitle.textContent = 'Dark Mode';
+                } else {
+                    document.body.className = 'light-mode';
+                    localStorage.setItem('theme', 'light');
+                    modeTitle.textContent = 'Light Mode';
+                }
+            });
+        });
+    </script>
 </body>
 </html>
