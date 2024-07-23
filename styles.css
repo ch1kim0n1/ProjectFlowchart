@@ -460,10 +460,50 @@ body.dark-mode #searchBox {
 #backButton:hover {
     background-color: #555;
 }
-body {
+
+.about-page {
     background-image: url('./assets/UtdBG2.jpeg');
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center;
-} 
+}
+
+/* Style for the content container with a semi-transparent background */
+.content-container {
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 30px;
+    border-radius: 10px;
+}
+
+/* Other styles */
+body.dark-mode .about-page {
+    background-color: #121212;
+    color: #ffffff;
+}
+
+body.light-mode .about-page {
+    background-color: #f0f0f0;
+    color: #333;
+}
+
+/* Styles for the animated button */
+.animated-button {
+    display: inline-block;
+    padding: 15px 25px;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    color: #fff;
+    background-color: #333;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.animated-button:hover {
+    background-color: #555;
+    transform: scale(1.1);
+}
