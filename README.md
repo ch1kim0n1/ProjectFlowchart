@@ -10,6 +10,8 @@ Welcome to Project Flowchart! This web application provides detailed information
 - Armaan 
 - Divya
 - Arnav
+- Rishi
+  
 
 ## Features
 
