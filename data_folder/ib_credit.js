@@ -10,12 +10,12 @@ function getIBCreditData() {
 
     let ibCreditData = {
         credits: [
-            // 3s (WRONG INFO HERE!!!)
-            new IBCredit("Art History","IB Art History", 3, "3 SCH free electives"),
-            new IBCredit("Studio Art-2D Design","IB Studio Art 2D", 3, "3 SCH free electives"),
-            new IBCredit("Studio Art-Drawing","IB Studio Art Drawing", 3, "3 SCH free electives"),
-            new IBCredit("3D Art and Design","IB 3D and Design", 3, "ARTS 2381"),
-            new IBCredit("Biology","IB Biology", 3, "3 SCH free electives"),
+            // 4s (WRONG INFO HERE!!!)
+            new IBCredit("Biology","Biology", 4, "3 SCH free electives"),
+            new IBCredit("Language A: Literature","Language A: Literature", 4, "3 SCH free electives"),
+            new IBCredit("Language A: Language and Literature","Language A: Language and Literature", 4, "3 SCH free electives"),
+            new IBCredit("Environmental Systems and Societies","Environmental Systems and Societies", 4, "3 SCH free electives"),
+            new IBCredit("Geography","Geography", 4, "3 SCH free electives"),
             new IBCredit("Chemistry","IB Chemistry", 3, "3 SCH free electives"),
             new IBCredit("Chinese","IB Chinese Lang and Culture", 3, "CHIN 1311 & 1312"),
             new IBCredit("Comp Sci","IB CSA", 3, "3 SCH free electives"),
