@@ -4,8 +4,8 @@
     <link rel="icon" href="../assets/utd_png.png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CLEP Credit Information</title>
-    <link rel="stylesheet" href="ap_credit_css.css">
+    <title>AP Credit Information</title>
+    <link rel="stylesheet" href="credits_css.css">
 </head>
 <body class="dark-mode">
     <header>
@@ -24,7 +24,8 @@
         </nav>
     </header>
     <main>
-        <h1>CLEP Credit Information</h1>
+        <h1>Exam Credit Information</h1>
+        <p>Double-click on the exam you wish to view to load it into the table</p>
         <div id="filterContainer">
             <input type="text" id="courseFilter" placeholder="Filter by course...">
             <input type="number" id="scoreFilter" placeholder="Filter by score...">
@@ -36,7 +37,7 @@
             <thead>
                 <tr>
                     <th>Course</th>
-                    <th>CLEP Exam</th>
+                    <th>Exam</th>
                     <th>Score</th>
                     <th>Credit Awarded</th>
                 </tr>
@@ -45,6 +46,10 @@
                 <!-- Content will be dynamically inserted here -->
             </tbody>
         </table>
+        <p> AP EXAM INFO: </p>
+        <p>* Math credit will be applied based on your declared major.</p>
+        <p>** Physics Majors: Credit for 2326 + 2126 is applied only if PHYS 3416 is passed with a grade of C or higher; otherwise you earn 4 SCH of free electives. Other Majors: Credit for PHYS 2326 + 2126 with a score of 4 or 5.</p>
+        <p>*** Requires an AB subscore of 4 or 5.</p>
     </main>
     <footer>
         <p>&copy; 2024 Project Flowchart. All rights reserved.</p>
