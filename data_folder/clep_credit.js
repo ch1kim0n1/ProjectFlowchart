@@ -8,7 +8,7 @@ function getCLEPCreditData() {
         }
     }
 
-    let CLEPCreditData = {
+    let clepCreditData = {
         credits: [
             // Foreign Languages
             new CLEPCredit("French Language","French Language: Level 1", 50, "FREN 1311/FREN 1312"),
@@ -72,5 +72,5 @@ function getCLEPCreditData() {
         }
     };
 
-    return CLEPCreditData;
+    return clepCreditData;
 }
