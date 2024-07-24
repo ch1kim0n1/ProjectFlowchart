@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const apCreditData = getAPCreditData();
-    const apCreditTableBody = document.getElementById('apCreditTable').querySelector('tbody');
+    const clepCreditData = getCLEPCreditData();
+    const clepCreditTableBody = document.getElementById('clepCreditTable').querySelector('tbody');
     const courseFilter = document.getElementById('courseFilter');
     const scoreFilter = document.getElementById('scoreFilter');
     const creditFilter = document.getElementById('creditFilter');
@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const resetButton = document.getElementById('resetButton');
 
     function populateTable(data) {
-        apCreditTableBody.innerHTML = '';
+        clepCreditTableBody.innerHTML = '';
         data.forEach(credit => {
             const row = document.createElement('tr');
             row.innerHTML = `
@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 <td>${credit.score}</td>
                 <td>${credit.creditAwarded}</td>
             `;
-            apCreditTableBody.appendChild(row);
+            clepCreditTableBody.appendChild(row);
         });
     }
 
@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const subject = courseFilter.value.trim();
         const score = parseInt(scoreFilter.value, 10);
         const award = creditFilter.value.trim();
-        const filteredCredits = apCreditData.filterCredits(subject, score, award);
+        const filteredCredits = clepCreditData.filterCredits(subject, score, award);
         populateTable(filteredCredits);
     }
 
@@ -34,10 +34,10 @@ document.addEventListener('DOMContentLoaded', function() {
         courseFilter.value = '';
         scoreFilter.value = '';
         creditFilter.value = '';
-        populateTable(apCreditData.credits);
+        populateTable(clepCreditData.credits);
     });
 
-    populateTable(apCreditData.credits);
+    populateTable(clepCreditData.credits);
     
     // Mode switcher
     const modeToggle = document.getElementById('modeToggle');

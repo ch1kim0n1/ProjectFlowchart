@@ -72,5 +72,5 @@ function getCLEPCreditData() {
         }
     };
 
-    return apCreditData;
+    return CLEPCreditData;
 }

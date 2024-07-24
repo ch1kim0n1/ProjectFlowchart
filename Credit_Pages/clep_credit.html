@@ -5,12 +5,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CLEP Credit Information</title>
-    <link rel="stylesheet" href="clep_credit_css.css">
+    <link rel="stylesheet" href="ap_credit_css.css">
 </head>
 <body class="dark-mode">
     <header>
         <nav>
-            <a href="./CLEP_Credit_Page/clep_credit.html">CLEP Credit</a>
+            <div class="dropdown">
+                <button class="dropbtn">Select Credit Type</button>
+                <div class="dropdown-content">
+                    <a href="./ap_credit.html">AP</a>
+                    <a href="./clep_credit.html">CLEP</a>
+                    <a href="./ib_credit.html">IB</a>
+                </div>
+            </div>
             <a href="../home.html">Home</a>
             <a href="../about.html">About</a>
             <a href="../index.html">Project Flowchart</a>
@@ -38,9 +45,6 @@
                 <!-- Content will be dynamically inserted here -->
             </tbody>
         </table>
-        <p>* Math credit will be applied based on your declared major.</p>
-        <p>** Physics Majors: Credit for 2326 + 2126 is applied only if PHYS 3416 is passed with a grade of C or higher; otherwise you earn 4 SCH of free electives. Other Majors: Credit for PHYS 2326 + 2126 with a score of 4 or 5.</p>
-        <p>*** Requires an AB subscore of 4 or 5.</p>
     </main>
     <footer>
         <p>&copy; 2024 Project Flowchart. All rights reserved.</p>
@@ -55,32 +59,6 @@
     </div>
     <script src="clep_credit_script.js"></script>
     <script src="../data_folder/clep_credit.js"></script>
-
-    <script>
-        //separate script for mode switcher
-        document.addEventListener('DOMContentLoaded', function() {
-            const modeToggle = document.getElementById('modeToggle');
-            const modeTitle = document.getElementById('modeTitle');
-    
-            // Apply saved theme mode
-            const savedMode = localStorage.getItem('theme') || 'dark';
-            document.body.className = savedMode + '-mode';
-            modeToggle.checked = savedMode === 'dark';
-            modeTitle.textContent = savedMode.charAt(0).toUpperCase() + savedMode.slice(1) + ' Mode';
-    
-            modeToggle.addEventListener('change', function() {
-                if (modeToggle.checked) {
-                    document.body.className = 'dark-mode';
-                    localStorage.setItem('theme', 'dark');
-                    modeTitle.textContent = 'Dark Mode';
-                } else {
-                    document.body.className = 'light-mode';
-                    localStorage.setItem('theme', 'light');
-                    modeTitle.textContent = 'Light Mode';
-                }
-            });
-        });
-    </script>
 
 </body>
 </html>
