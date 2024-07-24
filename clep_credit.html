@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" href="../assets/utd_png.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CLEP Credit Information</title>
+    <link rel="stylesheet" href="ap_credit_css.css">
+</head>
+<body class="dark-mode">
+    <header>
+        <nav>
+            <a href="./AP_Credit_Page/clep_credit.html">CLEP Credit</a>
+            <a href="../home.html">Home</a>
+            <a href="../about.html">About</a>
+            <a href="../index.html">Project Flowchart</a>
+        </nav>
+    </header>
+    <main>
+        <h1>CLEP Credit Information</h1>
+        <div id="filterContainer">
+            <input type="text" id="courseFilter" placeholder="Filter by course...">
+            <input type="number" id="scoreFilter" placeholder="Filter by score...">
+            <input type="text" id="creditFilter" placeholder="Filter by credit awarded...">
+            <button id="filterButton">Filter</button>
+            <button id="resetButton">Reset</button>
+        </div>
+        <table id="apCreditTable">
+            <thead>
+                <tr>
+                    <th>Course</th>
+                    <th>AP Exam</th>
+                    <th>Score</th>
+                    <th>Credit Awarded</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Content will be dynamically inserted here -->
+            </tbody>
+        </table>
+        <p>* Math credit will be applied based on your declared major.</p>
+        <p>** Physics Majors: Credit for 2326 + 2126 is applied only if PHYS 3416 is passed with a grade of C or higher; otherwise you earn 4 SCH of free electives. Other Majors: Credit for PHYS 2326 + 2126 with a score of 4 or 5.</p>
+        <p>*** Requires an AB subscore of 4 or 5.</p>
+    </main>
+    <footer>
+        <p>&copy; 2024 Project Flowchart. All rights reserved.</p>
+        <p>Made by Vladislav, Armaan, Divya, Arnav, and Rishi</p>
+    </footer>
+    <div class="mode-switcher">
+        <span id="modeTitle">Dark Mode</span>
+        <label class="switch">
+            <input type="checkbox" id="modeToggle" checked>
+            <span class="slider"></span>
+        </label>
+    </div>
+    <script src="ap_credit_script.js"></script>
+    <script src="../data_folder/ap_credit.js"></script>
+
+    <script>
+        //separate script for mode switcher
+        document.addEventListener('DOMContentLoaded', function() {
+            const modeToggle = document.getElementById('modeToggle');
+            const modeTitle = document.getElementById('modeTitle');
+    
+            // Apply saved theme mode
+            const savedMode = localStorage.getItem('theme') || 'dark';
+            document.body.className = savedMode + '-mode';
+            modeToggle.checked = savedMode === 'dark';
+            modeTitle.textContent = savedMode.charAt(0).toUpperCase() + savedMode.slice(1) + ' Mode';
+    
+            modeToggle.addEventListener('change', function() {
+                if (modeToggle.checked) {
+                    document.body.className = 'dark-mode';
+                    localStorage.setItem('theme', 'dark');
+                    modeTitle.textContent = 'Dark Mode';
+                } else {
+                    document.body.className = 'light-mode';
+                    localStorage.setItem('theme', 'light');
+                    modeTitle.textContent = 'Light Mode';
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
