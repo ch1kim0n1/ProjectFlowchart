@@ -9,6 +9,13 @@ function getData() {
             this.corequisites = corequisites;
             this.semester = semester;
             this.description = description;
+            this.postrequisites = [];
+        }
+
+        addPostrequisite(postrequisiteId) {
+            if (!this.postrequisites.includes(postrequisiteId)) {
+                this.postrequisites.push(postrequisiteId);
+            }
         }
     }
 
@@ -76,8 +83,8 @@ function getData() {
             return this.courses.find(course => course.id === id);
         },
 
-        getCourseByName: function (name) {
-            return this.courses.find(course => course.name === name);
+        getCourseByCode: function (code) {
+            return this.courses.find(course => course.code === code);
         },
 
         getCoursesBySemester: function (semester) {
@@ -87,27 +94,44 @@ function getData() {
         getPrerequisiteSequence: function (courseId) {
             const course = this.getCourseById(courseId);
             if (!course) return [];
-            return course.prerequisites.flatMap(prereqId =>
-                [prereqId, ...this.getPrerequisiteSequence(prereqId)]
+            return course.prerequisites.flatMap(prereqCode =>
+                [this.getCourseByCode(prereqCode).id, ...this.getPrerequisiteSequence(this.getCourseByCode(prereqCode).id)]
             );
         },
 
         getCorequisiteSequence: function (courseId) {
             const course = this.getCourseById(courseId);
             if (!course) return [];
-            return course.corequisites.flatMap(coreqId =>
-                [coreqId, ...this.getCorequisiteSequence(coreqId)]
+            return course.corequisites.flatMap(coreqCode =>
+                [this.getCourseByCode(coreqCode).id, ...this.getCorequisiteSequence(this.getCourseByCode(coreqCode).id)]
             );
         },
 
         getPostrequisiteSequence: function (courseId) {
             const course = this.getCourseById(courseId);
             if (!course) return [];
-            return course.postrequisites.flatMap(postreqId =>
-                [postreqId, ...this.getPostrequisiteSequence(postreqId)]
+            return course.postrequisites.flatMap(postreqCode =>
+                [this.getCourseByCode(postreqCode).id, ...this.getPostrequisiteSequence(this.getCourseByCode(postreqCode).id)]
             );
         }
     };
+
+    // Populate postrequisites for each course
+    courseData.courses.forEach(course => {
+        course.prerequisites.forEach(prereqCode => {
+            const prereqCourse = courseData.getCourseByCode(prereqCode);
+            if (prereqCourse) {
+                prereqCourse.addPostrequisite(course.code);
+            }
+        });
+
+        course.corequisites.forEach(coreqCode => {
+            const coreqCourse = courseData.getCourseByCode(coreqCode);
+            if (coreqCourse) {
+                coreqCourse.addPostrequisite(course.code);
+            }
+        });
+    });
 
     return courseData;
 }

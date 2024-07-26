@@ -487,6 +487,55 @@ body.dark-mode #searchBox {
     border-radius: 10px;
 }
 
+.highlight-prerequisite-sequence {
+    background-color: lightblue !important;
+}
+
+.highlight-prerequisite {
+    background-color: red !important;
+}
+
+.highlight-corequisite {
+    background-color: yellow !important;
+}
+
+.highlight-postrequisite {
+    background-color: green !important;
+}
+
+.highlight-postrequisite-sequence {
+    background-color: lightgreen !important;
+}
+
+.highlight-prerequisite-sequence {
+    background-color: lightblue !important;
+}
+
+.highlight-prerequisite {
+    background-color: red !important;
+}
+
+.highlight-corequisite {
+    background-color: yellow !important;
+}
+
+.highlight-postrequisite-sequence {
+    background-color: lightgreen !important;
+}
+
+.highlight-postrequisite {
+    background-color: green !important;
+}
+
+.key-box {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+
 /* Styles for the animated button */
 .animated-button {
     display: inline-block;

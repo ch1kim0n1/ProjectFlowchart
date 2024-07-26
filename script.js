@@ -135,50 +135,42 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function highlightCourseAndRelations(course, action) {
-        const courseCell = document.querySelector(`td[data-course-id="${course.id}"]`);
-
-        if (action === 'add') {
-            courseCell.classList.add('highlight-prerequisite');
-        } else {
-            courseCell.classList.remove('highlight-prerequisite');
+        function applyHighlight(courseId, action, highlightType) {
+            const courseCell = document.querySelector(`td[data-course-id="${courseId}"]`);
+            if (courseCell) {
+                if (action === 'add') {
+                    courseCell.classList.add(highlightType);
+                } else {
+                    courseCell.classList.remove(highlightType);
+                }
+            }
         }
 
-        course.prerequisites.forEach(prerequisiteCode => {
-            const prerequisiteCourse = courseData.courses.find(c => c.code === prerequisiteCode);
-            const prerequisiteCell = document.querySelector(`td[data-course-id="${prerequisiteCourse.id}"]`);
-            if (prerequisiteCell) {
-                if (action === 'add') {
-                    prerequisiteCell.classList.add('highlight-prerequisite');
-                } else {
-                    prerequisiteCell.classList.remove('highlight-prerequisite');
-                }
-            }
+        // Highlight the main course prerequisite sequence
+        const prerequisiteSequence = courseData.getPrerequisiteSequence(course.id);
+        prerequisiteSequence.forEach(prereqId => applyHighlight(prereqId, action, 'highlight-prerequisite-sequence'));
+
+        // Highlight prerequisites
+        course.prerequisites.forEach(prereqCode => {
+            const prerequisiteCourse = courseData.getCourseByCode(prereqCode);
+            applyHighlight(prerequisiteCourse.id, action, 'highlight-prerequisite');
         });
 
-        course.corequisites.forEach(corequisiteCode => {
-            const corequisiteCourse = courseData.courses.find(c => c.code === corequisiteCode);
-            const corequisiteCell = document.querySelector(`td[data-course-id="${corequisiteCourse.id}"]`);
-            if (corequisiteCell) {
-                if (action === 'add') {
-                    corequisiteCell.classList.add('highlight-corequisite');
-                } else {
-                    corequisiteCell.classList.remove('highlight-corequisite');
-                }
-            }
+        // Highlight corequisites
+        course.corequisites.forEach(coreqCode => {
+            const corequisiteCourse = courseData.getCourseByCode(coreqCode);
+            applyHighlight(corequisiteCourse.id, action, 'highlight-corequisite');
         });
 
-        courseData.courses.forEach(c => {
-            if (c.prerequisites.includes(course.code) || c.corequisites.includes(course.code)) {
-                const postrequisiteCell = document.querySelector(`td[data-course-id="${c.id}"]`);
-                if (postrequisiteCell) {
-                    if (action === 'add') {
-                        postrequisiteCell.classList.add('highlight-postrequisite');
-                    } else {
-                        postrequisiteCell.classList.remove('highlight-postrequisite');
-                    }
-                }
-            }
+        // Highlight postrequisites
+        course.postrequisites.forEach(postreqCode => {
+            const postrequisiteCourse = courseData.getCourseByCode(postreqCode);
+            applyHighlight(postrequisiteCourse.id, action, 'highlight-postrequisite');
         });
+
+        // Highlight postrequisite sequence
+        const postrequisiteSequence = courseData.getPostrequisiteSequence(course.id);
+        postrequisiteSequence.forEach(postreqId => applyHighlight(postreqId, action, 'highlight-postrequisite-sequence'));
     }
 
     // Close popup
