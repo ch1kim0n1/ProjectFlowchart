@@ -104,22 +104,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    function handleMouseEnter(event) {
-        const courseId = event.target.dataset.courseId;
-        if (courseId !== "core") {
-            const course = courseData.getCourseById(Number(courseId));
-            highlightCourseAndRelations(course, 'add');
-        }
-    }
-
-    function handleMouseLeave(event) {
-        const courseId = event.target.dataset.courseId;
-        if (courseId !== "core") {
-            const course = courseData.getCourseById(Number(courseId));
-            highlightCourseAndRelations(course, 'remove');
-        }
-    }
-
     function handleCourseClick(event) {
         const courseId = event.target.dataset.courseId;
         if (courseId !== "core") {
@@ -171,6 +155,22 @@ document.addEventListener('DOMContentLoaded', function() {
         // Highlight postrequisite sequence
         const postrequisiteSequence = courseData.getPostrequisiteSequence(course.id);
         postrequisiteSequence.forEach(postreqId => applyHighlight(postreqId, action, 'highlight-postrequisite-sequence'));
+    }
+
+    function handleMouseEnter(event) {
+        const courseId = event.target.dataset.courseId;
+        if (courseId !== "core") {
+            const course = courseData.getCourseById(Number(courseId));
+            highlightCourseAndRelations(course, 'add');
+        }
+    }
+
+    function handleMouseLeave(event) {
+        const courseId = event.target.dataset.courseId;
+        if (courseId !== "core") {
+            const course = courseData.getCourseById(Number(courseId));
+            highlightCourseAndRelations(course, 'remove');
+        }
     }
 
     // Close popup
@@ -276,7 +276,7 @@ document.addEventListener('DOMContentLoaded', function() {
         {
             scriptElement.src = `./data_folder/ce_data.js`;
         }
-        else
+        else if(selectedMajor == "EE")
         {
             scriptElement.src = `./data_folder/ee_data.js`;
         }
