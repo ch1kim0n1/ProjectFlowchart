@@ -10,25 +10,28 @@ function getIBCreditData() {
 
     let ibCreditData = {
         credits: [
-            // 4s (WRONG INFO HERE!!!)
-            new IBCredit("Biology","Biology", 4, "3 SCH free electives"),
-            new IBCredit("Language A: Literature","Language A: Literature", 4, "3 SCH free electives"),
-            new IBCredit("Language A: Language and Literature","Language A: Language and Literature", 4, "3 SCH free electives"),
-            new IBCredit("Environmental Systems and Societies","Environmental Systems and Societies", 4, "3 SCH free electives"),
-            new IBCredit("Geography","Geography", 4, "3 SCH free electives"),
-            new IBCredit("Chemistry","IB Chemistry", 3, "3 SCH free electives"),
-            new IBCredit("Chinese","IB Chinese Lang and Culture", 3, "CHIN 1311 & 1312"),
-            new IBCredit("Comp Sci","IB CSA", 3, "3 SCH free electives"),
-            new IBCredit("Economics","IB MacroEconomics", 3, "3 SCH free electives"),
-            new IBCredit("Economics","IB MicroEconomics", 3, "3 SCH free electives"),
-            new IBCredit("English","IB Eng Lang and Composition", 3, "3 SCH free electives or RHET 1301"),
-            new IBCredit("English","IB Lit and Composition", 3, "3 SCH free electives or RHET 1301"),
-            new IBCredit("Environmental Sci","IBES", 3, "GEOS 2302(Same as ENVR 2302 and GEOG 2302"),
-            new IBCredit("French","IB French Lang and Culture", 3, "FREN 1311 & 1312"),
-            new IBCredit("GeogrIBhy","IB Human GeogrIBhy", 3, "GEOG 2302"),
-            new IBCredit("German","IB German Lang and Culture", 3, "GERM 1311 & 1312"),
-            new IBCredit("Gov and Politics","IB Comp Gov and Politics", 3, "3 SCH free electives"),
-            new IBCredit("Gov and Politics","IB US Gov and Politics", 3, "GOVT 2305"),
+            // Minimum 4 (WRONG INFO HERE!!!)
+            new IBCredit("Biology","Biology", Minimum 4, "3 SCH free electives"),
+            new IBCredit("Language A: Literature","Language A: Literature", Minimum 4, "3 SCH free electives"),
+            new IBCredit("Language A: Language and Literature","Language A: Language and Literature", Minimum 4, "3 SCH free electives"),
+            new IBCredit("Environmental Systems and Societies","Environmental Systems and Societies", Minimum 4, "3 SCH free electives"),
+            new IBCredit("Geography","Geography", Minimum 4, "3 SCH free electives"),
+            new IBCredit("Any B language offered by UTD	","Any B language offered by UTD", Minimum 4, "3 SCH free electives"),
+            new IBCredit("Mathematics","Mathematics", Minimum 4, "3 SCH free electives"),
+            new IBCredit("Music","Music", Minimum 4, "3 SCH free electives"),
+            new IBCredit("Philosophy","Philosophy", Minimum 4, "3 SCH free electives"),
+            new IBCredit("Theatre","Theatre", Minimum 4, "3 SCH free electives"),
+            new IBCredit("Visual Arts","Visual Arts", Minimum 4, "3 SCH free electives"),
+            new IBCredit("Film","Film", Minimum 4, "3 SCH free electives"),
+
+            // Minimum 5
+
+            new IBCredit("Biology","Biology", Minimum 5, "GEOS 2302(Same as ENVR 2302 and GEOG 2302"),
+            new IBCredit("French","IB French Lang and Culture", Minimum 5, "FREN 1311 & 1312"),
+            new IBCredit("GeogrIBhy","IB Human GeogrIBhy", Minimum 5, "GEOG 2302"),
+            new IBCredit("German","IB German Lang and Culture", Minimum 5, "GERM 1311 & 1312"),
+            new IBCredit("Gov and Politics","IB Comp Gov and Politics", Minimum 5, "3 SCH free electives"),
+            new IBCredit("Gov and Politics","IB US Gov and Politics", Minimum 5, "GOVT 2305"),
             new IBCredit("History","IB European History", 3, "HIST 2360"),
             new IBCredit("History","IBUSH", 3, "HIST 1301"),
             new IBCredit("History","IBWH", 3, "HIST 2322"),
