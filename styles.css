@@ -629,3 +629,155 @@ body.dark-mode .modal-content button:disabled {
 body.dark-mode .modal-content button:enabled {
     background-color: #007BFF;
 }
+
+/* Additional styles for comments page */
+
+.comments-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+    background-color: #f0f0f0;
+}
+
+body.dark-mode .comments-container {
+    background-color: #121212;
+}
+
+.comment {
+    position: absolute;
+    width: 90%;
+    max-width: 800px;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 1s ease, transform 1s ease;
+}
+
+body.dark-mode .comment {
+    background-color: #333;
+}
+
+.comment-text {
+    font-size: 1.2em;
+    line-height: 1.6;
+    color: #333;
+    text-align: center;
+    position: relative;
+}
+
+body.dark-mode .comment-text {
+    color: #fff;
+}
+
+.comment-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.parallax-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('assets/parallax-bg.jpg') no-repeat center center fixed;
+    background-size: cover;
+    z-index: -1;
+    transform: translateZ(-1px) scale(2);
+}
+
+.profile-pic {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+    float: left;
+}
+
+.comment-actions {
+    margin-top: 10px;
+    text-align: center;
+}
+
+.comment-actions button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    font-size: 1em;
+    color: #333;
+}
+
+.comment-actions button:hover {
+    color: #555;
+}
+
+body.dark-mode .comment-actions button {
+    color: #fff;
+}
+
+body.dark-mode .comment-actions button:hover {
+    color: #aaa;
+}
+
+/* 3D Transformations and Parallax Effects */
+.comment {
+    perspective: 1000px;
+}
+
+.comment-visible {
+    opacity: 1;
+    transform: translateY(0) rotateY(0);
+    transition: opacity 1s ease, transform 1s ease;
+}
+
+.comment-hidden {
+    opacity: 0;
+    transform: translateY(50px) rotateY(90deg);
+}
+
+.parallax-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('assets/parallax-bg.jpg') no-repeat center center fixed;
+    background-size: cover;
+    z-index: -1;
+    transform: translateZ(-1px) scale(2);
+}
+
+/* SVG Animations */
+@keyframes draw {
+    0% {
+        stroke-dasharray: 0, 100;
+    }
+    100% {
+        stroke-dasharray: 100, 0;
+    }
+}
+
+.comment svg {
+    width: 100px;
+    height: 100px;
+    display: block;
+    margin: 0 auto;
+    animation: draw 4s infinite;
+}
+
+.quote-mark {
+    fill: none;
+    stroke: #333;
+    stroke-width: 2;
+}
+
+body.dark-mode .quote-mark {
+    stroke: #fff;
+}
