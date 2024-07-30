@@ -1,4 +1,4 @@
-# Project Flowchart
+# CometChart
 
 ![Project Flowchart Logo](assets/utd_png.png)
 
